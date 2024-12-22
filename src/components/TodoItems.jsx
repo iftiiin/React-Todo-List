@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { faCircleCheck, faTrash, faPenToSquare  } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faTrash  } from "@fortawesome/free-solid-svg-icons";
 import { faCircle as faRegCircle } from "@fortawesome/free-regular-svg-icons";
 const TodoItems = ({todo, deleteTodo, toggle}) => {
     return (
@@ -13,7 +12,6 @@ const TodoItems = ({todo, deleteTodo, toggle}) => {
                         <span className={`${todo.iscomplete ? "line-through" : ""}`}>{todo.text}</span>
                     </div>
                     <div className="space-x-2">
-                        <button className="text-blue-500 hover:text-blue-600"><FontAwesomeIcon icon={faPenToSquare }  /></button>
                         <button className="text-red-500 hover:text-red-600" onClick={()=> deleteTodo(todo.id)}><FontAwesomeIcon icon={faTrash}  /></button>
                     </div>
                     

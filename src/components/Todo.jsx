@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TodoItems from "./TodoItems";
-import { text } from "@fortawesome/fontawesome-svg-core";
 const Todo =() => {
-    const [todoList, setTodoList] = useState([])
+    const [todoList, setTodoList] = useState(localStorage.getItem("todos")? JSON.parse(localStorage.getItem("todos")) : [])
     const [inputValue, setInputValue] = useState('')
     const addTask = ()=>{
         if (inputValue.trim() !== ""){
@@ -24,6 +23,9 @@ const Todo =() => {
         setTodoList(todoList.map(todo => todo.id === id ? {...todo, iscomplete: !todo.iscomplete}: todo))
     }
     
+    useEffect(()=> {
+        localStorage.setItem("todos", JSON.stringify(todoList))
+    },[todoList])
     
     return (
         <div className="bg-gray-800 shadow-lg rounded-lg place-self-center w-11/12 max-w-md min-h-[450px] flex flex-col p-7
